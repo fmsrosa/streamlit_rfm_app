@@ -1,3 +1,12 @@
+## Overview
+
+This project consists in a Streamlit App running in a EC2 instance.
+
+The app displays a table and requests that user enters their name opinion regarding each row of the table.
+Once the user is satisfied with their entries, they can submit the data by clicking a submit button.
+
+Upon submission, the data is either saved to a pre-configured S3 bucket if the service is running on the EC2 instance, or stored locally if S3 is not accessible.
+
 ## Repository structure
 
 ```
@@ -33,13 +42,6 @@
 ```
 
 ## Using AWS Services
-
-This project consists in a Streamlit App running in a EC2 instance.
-
-The app displays a table and requests that user enters their name opinion regarding each row of the table.
-Once the user is satisfied with their entries, they can submit the data by clicking a submit button.
-
-Upon submission, the data is either saved to a pre-configured S3 bucket if the service is running on the EC2 instance, or stored locally if S3 is not accessible.
 
 ### Create IAM role
 
