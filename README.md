@@ -110,4 +110,4 @@ $ ssh -i config/rfm_key.pem ec2-user@13.48.249.248 # enter in EC2 instance
 ```
 
 ## Example
-![image](https://github.com/user-attachments/assets/fea633ba-84d9-4ebe-92b1-0799ac368dfc)
+![image](https://github.com/user-attachments/assets/283f9f76-63f5-430e-8442-f0de1ec708de)
