@@ -72,7 +72,7 @@ After creating the EC2 instance, confirmed there was no IAM role associated with
 
 Registered my public address (13.48.249.248).
 
-## Accessing EC2 instance
+### Accessing EC2 instance
 
 ```
 # Enter EC2 instance
@@ -108,3 +108,6 @@ $ ssh -i config/rfm_key.pem ec2-user@13.48.249.248 # enter in EC2 instance
 # Deploy app and make it accessible online
 [ec2-instance]$ poetry run streamlit run app.py --server.port 8501 --server.enableCORS false --server.enableXsrfProtection false
 ```
+
+## Example
+![image](https://github.com/user-attachments/assets/fea633ba-84d9-4ebe-92b1-0799ac368dfc)
