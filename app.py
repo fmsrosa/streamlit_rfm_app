@@ -1,7 +1,13 @@
 from datetime import datetime
+from io import BytesIO
 
+import boto3
 import pandas as pd
 import streamlit as st
+from botocore.exceptions import NoCredentialsError
+
+S3_BUCKET: str = "rfmanalysisuseroutput"
+S3_CLIENT: boto3.client = boto3.client("s3")
 
 
 def prepare_df_to_display(
@@ -87,11 +93,18 @@ def main():
 
     if st.button("Submit"):
         if not user:
-            st.write(":red[Please enter your name before submitting.]")
+            st.error("Please enter your name before submitting.")
         else:
             file_name: str = f"{user}_{datetime.now()}.csv"
-            table_result.to_csv(f"data/user_output/{file_name}")
-            st.write("Submission successful.")
+            try:
+                csv_buffer = BytesIO()
+                table_result.to_csv(csv_buffer)
+
+                S3_CLIENT.upload_fileobj(csv_buffer, S3_BUCKET, file_name)
+                st.success("Submission successful.")
+            except NoCredentialsError:
+                table_result.to_csv(f"data/user_output/{file_name}")
+                st.warning("Could not save submission remotely. Saved local file instead.")
 
 
 if __name__ == "__main__":
