@@ -25,4 +25,4 @@ line-length = 120
 # Vulture configs
 [tool.vulture]
 min_confidence = 80
-paths = []
+paths=["."]
